@@ -10,16 +10,18 @@ const resultOfAnswer = document.querySelector(".result-of-answer")
 const countTime = document.querySelector(".count-time");
 let answersList;
 let countCorrectAns = 0;
+let currentQues ;
 let time = 10;
 let countDuration;
 
 // Handel start and restart quiz 
-const startQuiz = function () {
+const startQuiz = async function () {
     startScreen.classList.add("hide");
     restartScreen.classList.add("hide");
     displayScreen.classList.remove("hide");
     countCorrectAns = 0;
-    questionsApi()
+    currentQues = 0;
+    await questionsApi()
 }
 startBtn.addEventListener("click", startQuiz)
 restartBtn.addEventListener("click", startQuiz)
@@ -30,7 +32,8 @@ const displayQuestions = function (data, currentQues = 0) {
     numOfQuestion.textContent = `${currentQues + 1} of ${data.length}`;
     if (currentQues == data.length) {
         displayScreen.classList.add("hide");
-        restartScreen.classList.remove("hide")
+        restartScreen.classList.remove("hide");
+        // return;
     }
 
     dataBox = `
@@ -49,8 +52,7 @@ const displayQuestions = function (data, currentQues = 0) {
 
 //handeled next question 
 const nextQuestionbtn = function (data) {
-    let currentQues = 0;
-
+    currentQues = 0;
     // next question
     nextQuestion.addEventListener("click", function () {
         currentQues++;
@@ -123,19 +125,24 @@ const displayNextQuestions = function (data, currentQues, time = 11) {
 }
 
 const questionsApi = async function () {
-    const res = await fetch("../question.json");
-    const data = await res.json();
-    // next Question
-    nextQuestionbtn(data)
+  try {
+      const res = await fetch("../question.json");
+      const data = await res.json();
+      // next Question
+      nextQuestionbtn(data)
 
-    // initial Question
-    displayQuestions(data)
+      // initial Question
+      displayQuestions(data)
 
-    //chooseAnswer
-    chooseAnswer(data)
+      //chooseAnswer
+      chooseAnswer(data)
 
-    // empty Result
-    showResult(data, 0)
+      // empty Result
+      showResult(data, 0)
+  }
+  catch (err) {
+    console.log(err);
+  }
 }
-questionsApi()
+await questionsApi()
 
