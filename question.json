@@ -1,0 +1,64 @@
+[
+  {
+    "title": "Which of the following keywords is used to define a variable in Javascript?",
+    "answer_1": "var",
+    "answer_2": "let",
+    "answer_3": "Both A and B",
+    "answer_4": "None of the above",
+    "correct_ans": "Both A and B"
+  },
+
+  {
+    "title": "Which of the following methods is used to access HTML elements using Javascript?",
+    "answer_1": "getElementById()",
+    "answer_2": "querySelector()",
+    "answer_3": "Both A and B",
+    "answer_4": "None of the above",
+    "correct_ans": "Both A and B"
+  },
+
+  {
+    "title": "The full form of CSS is:",
+    "answer_1": "Cascading Style Sheets",
+    "answer_2": "Coloured Special Sheets",
+    "answer_3": "Color and Style Sheets",
+    "answer_4": "None of the above",
+    "correct_ans": "Cascading Style Sheets"
+  },
+
+  {
+    "title": "How can a datatype be declared to be a constant type?",
+    "answer_1": "var",
+    "answer_2": "let",
+    "answer_3": "const",
+    "answer_4": "constant",
+    "correct_ans": "const"
+  },
+
+  {
+    "title": "In which part of the HTML metadata is contained?",
+    "answer_1": "head tag",
+    "answer_2": "html tag",
+    "answer_3": "title tag",
+    "answer_4": "body tag",
+    "correct_ans": "head tag"
+  },
+
+  {
+    "title": "Which of the following extension is used to save an HTML file?",
+    "answer_1": ".hl",
+    "answer_2": ".h",
+    "answer_3": ".htl",
+    "answer_4": ".html",
+    "correct_ans": ".html"
+  },
+
+  {
+    "title": "In how many ways can CSS be written in?",
+    "answer_1": "1",
+    "answer_2": "2",
+    "answer_3": "3",
+    "answer_4": "4",
+    "correct_ans": "3"
+  }
+]
