@@ -105,7 +105,7 @@ const chooseAnswer = function (data, currentQues = 0) {
 
 // Show result after ending all questions
 const showResult = function (data, countCorrectAns) {
-    resultOfAnswer.textContent = ` ${countCorrectAns > 3 ? "You Win 🎉" : "You Lost ⛔ , try again"} , Your score is ${countCorrectAns} out of ${data.length}`
+    resultOfAnswer.textContent = ` ${countCorrectAns > 3 ? "You Win 🎉" : "You Lost ⛔ , try again"} , Your score is ${countCorrectAns} of ${data.length}`
 }
 
 // Timer with display next question
