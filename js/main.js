@@ -10,17 +10,15 @@ const resultOfAnswer = document.querySelector(".result-of-answer")
 const countTime = document.querySelector(".count-time");
 let answersList;
 let countCorrectAns = 0;
-let currentQues ;
 let time = 10;
 let countDuration;
 
 // Handel start and restart quiz 
-const startQuiz =  function () {
+const startQuiz = function () {
     startScreen.classList.add("hide");
     restartScreen.classList.add("hide");
     displayScreen.classList.remove("hide");
     countCorrectAns = 0;
-    currentQues = 0;
     questionsApi()
 }
 startBtn.addEventListener("click", startQuiz)
@@ -28,13 +26,11 @@ restartBtn.addEventListener("click", startQuiz)
 
 // Display box of questions
 const displayQuestions = function (data, currentQues = 0) {
-
     let dataBox;
     numOfQuestion.textContent = `${currentQues + 1} of ${data.length}`;
     if (currentQues == data.length) {
         displayScreen.classList.add("hide");
-        restartScreen.classList.remove("hide");
-        // return;
+        restartScreen.classList.remove("hide")
     }
 
     dataBox = `
@@ -53,7 +49,8 @@ const displayQuestions = function (data, currentQues = 0) {
 
 //handeled next question 
 const nextQuestionbtn = function (data) {
-    currentQues = 0;
+    let currentQues = 0;
+
     // next question
     nextQuestion.addEventListener("click", function () {
         currentQues++;
@@ -125,26 +122,19 @@ const displayNextQuestions = function (data, currentQues, time = 11) {
 
 }
 
-const questionsApi =async function (data) {
-  try {
-      const res = await fetch("../question.json");
-      const data = await res.json();
-      // next Question
-      nextQuestionbtn(data)
+const questionsApi = async function () {
+    const res = await fetch("../question.json");
+    const data = await res.json();
+    // next Question
+    nextQuestionbtn(data)
 
-      // initial Question
-      displayQuestions(data)
+    // initial Question
+    displayQuestions(data)
 
-      //chooseAnswer
-      chooseAnswer(data)
+    //chooseAnswer
+    chooseAnswer(data)
 
-      // empty Result
-      showResult(data, 0)
-  }
-  catch (err) {
-    console.log(err);
-  }
-    
+    // empty Result
+    showResult(data, 0)
 }
 questionsApi()
-
