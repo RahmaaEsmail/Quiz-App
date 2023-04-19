@@ -15,19 +15,20 @@ let time = 10;
 let countDuration;
 
 // Handel start and restart quiz 
-const startQuiz = async function () {
+const startQuiz =  function () {
     startScreen.classList.add("hide");
     restartScreen.classList.add("hide");
     displayScreen.classList.remove("hide");
     countCorrectAns = 0;
     currentQues = 0;
-    await questionsApi()
+    questionsApi()
 }
 startBtn.addEventListener("click", startQuiz)
 restartBtn.addEventListener("click", startQuiz)
 
 // Display box of questions
 const displayQuestions = function (data, currentQues = 0) {
+
     let dataBox;
     numOfQuestion.textContent = `${currentQues + 1} of ${data.length}`;
     if (currentQues == data.length) {
@@ -124,7 +125,7 @@ const displayNextQuestions = function (data, currentQues, time = 11) {
 
 }
 
-const questionsApi = async function () {
+const questionsApi =async function (data) {
   try {
       const res = await fetch("../question.json");
       const data = await res.json();
@@ -143,6 +144,7 @@ const questionsApi = async function () {
   catch (err) {
     console.log(err);
   }
+    
 }
-await questionsApi()
+questionsApi()
 
